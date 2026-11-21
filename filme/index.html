@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-ES" class="esc" data-v="D">
+<html lang="es-ES" data-v="D" data-fim="B">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -278,6 +278,15 @@ body{padding-bottom:0}
 [data-fim=A] .fecho2,[data-fim=B] .fecho2{border-radius:28px 28px 0 0;margin-top:-28px}
 [data-fim=B] .fecho2::before{height:64px;background:linear-gradient(#2A1030 0 24px,#15100D 64px)}
 }
+/* botao flutuante (sem barra), so entre Servicios e o final; no hero o botao de WhatsApp volta no celular */
+@media(max-width:859px){
+[data-v=D] .barra{background:transparent!important;border:0!important;height:auto;padding:0 16px calc(16px + env(safe-area-inset-bottom));justify-content:center;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .22s ease-out,transform .22s ease-out,visibility 0s linear .22s;-webkit-backdrop-filter:none;backdrop-filter:none}
+[data-v=D].mostra .barra{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+[data-v=D] .barra .btn{pointer-events:auto;width:100%;max-width:420px;min-height:52px;background:#2A1030;color:#F3EEE9;border:1px solid rgba(201,164,106,.55);box-shadow:0 6px 20px rgba(21,16,13,.28)}
+[data-v=D] .so-d{display:inline-flex}
+[data-v=D] .hero2{--pe:190px}
+}
+@media(prefers-reduced-motion:reduce){[data-v=D] .barra{transform:none!important;transition:opacity .2s linear,visibility 0s linear .2s}}
 [data-v=D] .barra{transition:transform .25s ease,background-color .3s,border-color .3s}
 [data-v=D].esc .barra{background:rgba(21,16,13,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top-color:rgba(243,235,225,.12)}
 [data-v=D].esc .barra .btn{background:var(--tinta);color:var(--preto);border-color:var(--ouro-claro)}
@@ -433,15 +442,11 @@ document.querySelectorAll('.entra,.entra-filhos,.abre').forEach(function(el){o.o
 
 
 <script>
-(function(){var H=document.documentElement,bar=document.querySelector(".barra");if(!bar)return;var t=0;
-function lum(c){var m=c.match(/[\d.]+/g);if(!m||m.length<3)return null;var a=m.length>3?+m[3]:1;if(a<.5)return null;return(.2126*m[0]+.7152*m[1]+.0722*m[2])/255}
-function escuro(){var r=bar.getBoundingClientRect(),x=innerWidth/2,y=r.top+r.height/2,els=document.elementsFromPoint(x,y);
-for(var i=0;i<els.length;i++){var e=els[i];if(e===bar||bar.contains(e))continue;
-if(e.classList&&e.classList.contains("ponte")){var b=e.getBoundingClientRect(),f=(y-b.top)/b.height;return e.classList.contains("pa")?f<.4:f>.4}
-for(;e&&e.nodeType===1;e=e.parentElement){var l=lum(getComputedStyle(e).backgroundColor);if(l!==null)return l<.45}}return true}
-function run(){t=0;H.classList.toggle("esc",escuro())}
+(function(){var H=document.documentElement,t=0;
+function run(){t=0;var vh=innerHeight,sv=document.querySelector("#servicios"),fe=document.querySelector(".fecho2");if(!sv||!fe)return;
+H.classList.toggle("mostra",sv.getBoundingClientRect().top<vh*.7&&fe.getBoundingClientRect().top>vh*.85)}
 function tick(){if(!t)t=requestAnimationFrame(run)}
-addEventListener("scroll",tick,{passive:true});addEventListener("resize",tick);addEventListener("load",run);addEventListener("pageshow",run);run();setTimeout(run,300);setTimeout(run,1200);})();
+addEventListener("scroll",tick,{passive:true});addEventListener("resize",tick);addEventListener("load",run);addEventListener("pageshow",run);run();setTimeout(run,300);})();
 </script>
 <script>(function(){var f=document.querySelector(".fecho2");if(f&&window.IntersectionObserver)new IntersectionObserver(function(e){document.documentElement.classList.toggle("fim-ve",e[0].isIntersecting)},{threshold:.55}).observe(f)})();</script></body>
 </html>
