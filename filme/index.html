@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-ES" data-v="D">
+<html lang="es-ES" class="esc" data-v="D">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -263,6 +263,21 @@ body{padding-bottom:0}
 [data-v=D] .ponte{height:var(--ponte)}
 [data-v=D] .pa{background:linear-gradient(to bottom,#2A1030 0,#4B1E5A 30%,#9A7AA6 62%,#EFE7F3 90%,var(--creme) 100%)}
 [data-v=D] .pb{background:linear-gradient(to bottom,var(--creme) 0,#9A7AA6 40%,#2A1030 80%,#15100D 100%)}
+/* opcoes de fim (?fim=A tudo marrom | ?fim=B folha com borda ameixa); sem ?fim = ponte longa atual */
+[data-fim=A] .pa,[data-fim=A] .pb,[data-fim=B] .pa,[data-fim=B] .pb{display:none}
+[data-fim=A] .abre,[data-fim=B] .abre{padding-bottom:calc(48px + 40px)}
+[data-fim=A] #servicios,[data-fim=B] #servicios{background:var(--creme);border-radius:48px 48px 0 0;margin-top:-48px;position:relative;z-index:2}
+[data-fim=A] .faq,[data-fim=B] .faq{padding-bottom:calc(72px + 48px)}
+[data-fim=A] .fecho2,[data-fim=B] .fecho2{border-radius:48px 48px 0 0;margin-top:-48px;position:relative;z-index:2;overflow:hidden}
+[data-fim=B] .fecho2::before{content:"";position:absolute;left:0;right:0;top:0;height:92px;background:linear-gradient(#2A1030 0 36px,#15100D 92px);z-index:4;pointer-events:none}
+[data-fim=A] footer{background:#15100D;border-top:1px solid rgba(243,238,233,.12)}
+@media(max-width:859px){
+[data-fim=A] #servicios,[data-fim=B] #servicios{border-radius:28px 28px 0 0;margin-top:-28px}
+[data-fim=A] .abre,[data-fim=B] .abre{padding-bottom:calc(28px + 32px)}
+[data-fim=A] .faq,[data-fim=B] .faq{padding-bottom:calc(72px + 28px)}
+[data-fim=A] .fecho2,[data-fim=B] .fecho2{border-radius:28px 28px 0 0;margin-top:-28px}
+[data-fim=B] .fecho2::before{height:64px;background:linear-gradient(#2A1030 0 24px,#15100D 64px)}
+}
 [data-v=D] .barra{transition:transform .25s ease,background-color .3s,border-color .3s}
 [data-v=D].esc .barra{background:rgba(21,16,13,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top-color:rgba(243,235,225,.12)}
 [data-v=D].esc .barra .btn{background:var(--tinta);color:var(--preto);border-color:var(--ouro-claro)}
@@ -270,6 +285,7 @@ body{padding-bottom:0}
 [data-v=D] .barra{transition:transform .25s ease}
 [data-v=D].fim-ve .barra{transform:translateY(110%)}
 </style>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet"><style id="nome-gloock">.p-nome,.hero2 .p-nome,.fecho2 .p-nome{font-family:"Gloock",Georgia,serif!important;font-weight:400!important;letter-spacing:0!important}.hero2 .p-nome,.fecho2 .p-nome{text-transform:none!important}</style></head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -417,10 +433,15 @@ document.querySelectorAll('.entra,.entra-filhos,.abre').forEach(function(el){o.o
 
 
 <script>
-(function(){var H=document.documentElement,n=0;if(!window.IntersectionObserver)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target._d=e.isIntersecting});
-H.classList.toggle("esc",[].some.call(document.querySelectorAll(".hero2,.abre .wrap,.ponte"),function(x){return x._d}))},{rootMargin:"-90% 0px 0px 0px"});
-document.querySelectorAll(".hero2,.abre .wrap,.ponte").forEach(function(x){io.observe(x)});})();
+(function(){var H=document.documentElement,bar=document.querySelector(".barra");if(!bar)return;var t=0;
+function lum(c){var m=c.match(/[\d.]+/g);if(!m||m.length<3)return null;var a=m.length>3?+m[3]:1;if(a<.5)return null;return(.2126*m[0]+.7152*m[1]+.0722*m[2])/255}
+function escuro(){var r=bar.getBoundingClientRect(),x=innerWidth/2,y=r.top+r.height/2,els=document.elementsFromPoint(x,y);
+for(var i=0;i<els.length;i++){var e=els[i];if(e===bar||bar.contains(e))continue;
+if(e.classList&&e.classList.contains("ponte")){var b=e.getBoundingClientRect(),f=(y-b.top)/b.height;return e.classList.contains("pa")?f<.4:f>.4}
+for(;e&&e.nodeType===1;e=e.parentElement){var l=lum(getComputedStyle(e).backgroundColor);if(l!==null)return l<.45}}return true}
+function run(){t=0;H.classList.toggle("esc",escuro())}
+function tick(){if(!t)t=requestAnimationFrame(run)}
+addEventListener("scroll",tick,{passive:true});addEventListener("resize",tick);addEventListener("load",run);addEventListener("pageshow",run);run();setTimeout(run,300);setTimeout(run,1200);})();
 </script>
 <script>(function(){var f=document.querySelector(".fecho2");if(f&&window.IntersectionObserver)new IntersectionObserver(function(e){document.documentElement.classList.toggle("fim-ve",e[0].isIntersecting)},{threshold:.55}).observe(f)})();</script></body>
 </html>
