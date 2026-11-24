@@ -394,6 +394,14 @@ html[data-v5] section[data-ant]::before{content:"";position:absolute;top:0;left:
 }
 /* rodapé: 483px e nenhum botão (medido na v5a de 24/11); o flutuante está desligado aqui */
 footer{min-height:0}
+/* o canto arredondado deixava aparecer o creme do body (#F4EEE8) em cima do preto: dois cantos brancos.
+   Sem canto, o rodapé continua o preto do fecho em vez de ser um bloco solto. */
+footer{border-radius:0;padding-top:clamp(26px,4svh,38px)}
+/* a base reservava a altura da barra flutuante embaixo (100px), mas a barra fica escondida nesta zona:
+   ela some assim que o fecho entra na tela, bem antes do rodapé. Fica só o respiro do aparelho. */
+html[data-v5] footer{padding-bottom:calc(env(safe-area-inset-bottom) + 28px)}  /* [data-v=D] footer vence um footer solto */
+/* o nome em Gloock 32px repetia o hero e inflava o rodapé; aqui ele só identifica o titular */
+footer .marca{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:1.02rem;font-weight:600;letter-spacing:0;line-height:1.3}
 footer .btn-pe{display:inline-flex;margin:20px 0 4px;min-height:52px;width:100%;max-width:380px}
 @media (min-width:860px){footer .btn-pe{width:auto;padding-left:34px;padding-right:34px}}
 /* Servicios: seis cartões iguais e quase invisíveis (fundo .06, borda .12) não diziam o que ela faz melhor.
