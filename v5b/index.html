@@ -366,12 +366,25 @@ footer{margin-top:0}
 /* toque de 48px em tudo */
 html[data-v5] .top a.cta{min-height:48px;padding:0 6px}
 .formadora a{display:inline-flex;align-items:center;min-height:48px}
-footer::before{z-index:-1;height:clamp(96px,16svh,160px);background:linear-gradient(#2E1426,#15100D);background:linear-gradient(in oklab,#2E1426,#15100D)}
+/* o rodapé entra na mesma régua: o fecho já termina preto, então nada de faixa ameixa inventada; fica o fio dourado das seções */
+footer::before{z-index:0;top:0;left:50%;right:auto;width:min(160px,40vw);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(184,146,90,.6),transparent)}
+footer{padding-top:clamp(56px,9svh,96px)}
 /* v5b: sem divisória; o fundo da página muda de cor aos poucos, seção a seção */
 html.v5b-js section[data-tema]{background:transparent!important}
 html.v5b-js footer{background:transparent;margin-top:0;border-radius:0}
 html.v5b-js footer::before{display:none}
 html.v5b-js body{background-color:#15100D}
+/* rodapé: 483px e nenhum botão (medido na v5a de 24/11); o flutuante está desligado aqui */
+footer{min-height:0}
+footer .btn-pe{display:inline-flex;margin:20px 0 4px;min-height:52px;width:100%;max-width:380px}
+@media (min-width:860px){footer .btn-pe{width:auto;padding-left:34px;padding-right:34px}}
+/* Servicios: seis cartões iguais e quase invisíveis (fundo .06, borda .12) não diziam o que ela faz melhor.
+   O alisado brasileño é o que o público espanhol procura pelo nome (está no FAQ e no próprio cartão),
+   então ele ganha peso — sem uma palavra nova, que seria fato inventado. */
+#servicios .card{transition:background-color .35s ease,border-color .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+#servicios .card:nth-child(4){background:linear-gradient(rgba(46,20,38,.85),rgba(46,20,38,.3));background:linear-gradient(in oklab,rgba(46,20,38,.85),rgba(46,20,38,.3));border-top:2px solid var(--ouro-claro);box-shadow:0 12px 34px rgba(21,16,13,.4)}
+@media (hover:hover){#servicios .card:hover{background-color:rgba(243,235,225,.1);border-top-color:var(--ouro);transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){#servicios .card{transition:none}#servicios .card:hover{transform:none}}
 </style><style id="vx-css">.vx{position:fixed;z-index:40;top:max(8px,env(safe-area-inset-top));right:8px;display:flex;align-items:center;height:48px;border-radius:999px;background:rgba(21,16,13,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(217,183,126,.5);color:#F3EBE1;font:600 .8rem/1 "Plus Jakarta Sans",system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .vx a,.vx span{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;color:inherit;text-decoration:none;border-radius:999px}
 .vx .vx-t{padding:0 6px;min-width:auto;white-space:nowrap}.vx .vx-t b{color:#D9B77E;margin-left:.25em}
@@ -475,7 +488,7 @@ html.v5b-js body{background-color:#15100D}
 <details class="entra"><summary>¿Hablas portugués?</summary><p>Sí. Atiendo en español y también en portugués.</p></details>
 </div>
 </section>
-<section class="donde" data-ant="ameixa" data-tema="preto" aria-labelledby="t-donde">
+<section class="donde" data-tema="preto" aria-labelledby="t-donde">
 <div class="wrap">
 <p class="rot">Dónde</p>
 <h2 class="titulo-entra" id="t-donde">En Alicante</h2>
@@ -484,7 +497,7 @@ html.v5b-js body{background-color:#15100D}
 <p>Te paso la ubicación exacta cuando confirmamos la cita.</p>
 </div>
 </section>
-<section class="tela fecho2" data-ant="preto" data-tema="preto" aria-labelledby="t-fecho">
+<section class="tela fecho2" data-ant="ameixa" data-tema="preto" aria-labelledby="t-fecho">
 <div class="palco p-espalda">
 <picture class="p-fundo"><source type="image/avif" srcset="img/juliana-oliveira-intro-espalda-480.avif 480w, img/juliana-oliveira-intro-espalda-720.avif 720w, img/juliana-oliveira-intro-espalda-900.avif 900w, img/juliana-oliveira-intro-espalda-1080.avif 1080w" sizes="(min-width: 860px) calc(108svh * 0.75), 118vw"><img src="img/juliana-oliveira-intro-espalda-1080.webp" srcset="img/juliana-oliveira-intro-espalda-480.webp 480w, img/juliana-oliveira-intro-espalda-720.webp 720w, img/juliana-oliveira-intro-espalda-900.webp 900w, img/juliana-oliveira-intro-espalda-1080.webp 1080w" sizes="(min-width: 860px) calc(108svh * 0.75), 118vw" width="1080" height="1440" alt="Juliana Oliveira de espaldas, con su melena larga de rizos" loading="lazy" decoding="async"></picture>
 <h2 class="p-nome" id="t-fecho"><span class="l">¿Hablamos</span> <span class="l">de tu pelo?</span></h2>
@@ -503,10 +516,10 @@ html.v5b-js body{background-color:#15100D}
 <span>Peluquera en Alicante</span>
 <nav aria-label="Redes sociales">
 <a href="https://www.instagram.com/julianaoliveira_cabelos/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.tiktok.com/@julianahmcz" target="_blank" rel="noopener">TikTok</a><a href="https://wa.me/5512974063847?text=Hola%20Juliana%2C%20quiero%20pedir%20cita." target="_blank" rel="noopener">WhatsApp</a><a href="https://julianaoliveira-cursos.com.br/" target="_blank" rel="noopener">Curso online (en portugués)</a>
+<a href="https://www.tiktok.com/@julianahmcz" target="_blank" rel="noopener">TikTok</a><a href="https://wa.me/5512974063847?text=Hola%20Juliana%2C%20quiero%20pedir%20cita." target="_blank" rel="noopener">WhatsApp</a>
 <!-- [confirmar Juliana]: link do curso online («¿Eres peluquera? Mi curso online») e em que língua -->
 </nav>
-<details class="entra">
+<a class="btn btn-pe" href="https://wa.me/5512974063847?text=Hola%20Juliana%2C%20quiero%20pedir%20cita." target="_blank" rel="noopener">Pide cita por WhatsApp</a><details class="entra">
 <summary>Aviso legal y privacidad</summary>
 <!-- [confirmar Juliana]: titular, NIF, e-mail de contacto e dados exigidos pela LSSI-CE -->
 <div class="legal">
