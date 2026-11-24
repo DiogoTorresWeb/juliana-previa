@@ -363,6 +363,9 @@ footer .copia{margin-top:18px;font-size:.82rem;color:var(--tinta-2)}
 /* ===== fim v4 ===== */
 </style><link rel="preload" href="fonts/gloock-400.woff2" as="font" type="font/woff2" crossorigin><style id="nome-gloock">@font-face{font-family:"Gloock";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/gloock-400.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.p-nome,.hero2 .p-nome,.fecho2 .p-nome{font-family:"Gloock",Georgia,serif!important;font-weight:400!important;letter-spacing:0!important}.hero2 .p-nome,.fecho2 .p-nome{text-transform:none!important}</style><style id="v5-css">/* v5: roxo refeito para #2E1426; rodapé sem a faixa roxa e sem cobrir o botão final */
 footer{margin-top:0}
+/* toque de 48px em tudo */
+html[data-v5] .top a.cta{min-height:48px;padding:0 6px}
+.formadora a{display:inline-flex;align-items:center;min-height:48px}
 footer::before{z-index:-1;height:clamp(96px,16svh,160px);background:linear-gradient(#2E1426,#15100D);background:linear-gradient(in oklab,#2E1426,#15100D)}
 /* v5a: divisória suave entre seções (mistura OKLab + fio dourado curto) */
 section[data-ant="preto"]{--bg-ant:#15100D}section[data-ant="ameixa"]{--bg-ant:#2E1426}
@@ -370,14 +373,14 @@ html[data-v5] section[data-ant]:not(.tela){position:relative;background:linear-g
 html[data-v5] section[data-ant]:not(.tela)::before{content:"";position:absolute;top:0;left:50%;width:min(160px,40vw);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(184,146,90,.6),transparent);pointer-events:none}
 </style><style id="vx-css">.vx{position:fixed;z-index:40;top:max(8px,env(safe-area-inset-top));right:8px;display:flex;align-items:center;height:48px;border-radius:999px;background:rgba(21,16,13,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(217,183,126,.5);color:#F3EBE1;font:600 .8rem/1 "Plus Jakarta Sans",system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .vx a,.vx span{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;color:inherit;text-decoration:none;border-radius:999px}
-.vx .vx-t{padding:0 6px;min-width:auto;white-space:nowrap}.vx .vx-t b{color:#D9B77E;margin-left:.3em}
+.vx .vx-t{padding:0 6px;min-width:auto;white-space:nowrap}.vx .vx-t b{color:#D9B77E;margin-left:.25em}
 .vx a:hover{background:rgba(243,235,225,.08)}.vx a:focus-visible{outline:3px solid #A57BB4;outline-offset:2px}
 .vx span[aria-disabled]{opacity:.35}
 .vx svg{width:18px;height:18px}
 @media (min-width:860px){.vx{top:auto;bottom:16px;right:auto;left:16px}}
 @media print{.vx{display:none}}</style></head>
 <body>
-<nav class="vx" aria-label="Versiones de esta vista previa"><a href="../v4/" aria-label="Versión anterior: v4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><a class="vx-t" href="../versoes/" aria-label="Estás en la v5a. Ver todas las versiones">Estás en la<b>v5a</b></a><a href="../v5b/" aria-label="Versión siguiente: v5b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></nav><a class="skip" href="#contenido">Saltar al contenido</a>
+<nav class="vx" aria-label="Versiones de esta vista previa"><a href="../v4/" aria-label="Versión anterior: v4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><a class="vx-t" href="../versoes/" title="Ver todas las versiones">Estás en la <b>v5a</b></a><a href="../v5b/" aria-label="Versión siguiente: v5b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></nav><a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="top">
 <div class="wrap">
 <a class="marca" href="#contenido">Juliana Oliveira</a>
