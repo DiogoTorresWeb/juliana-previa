@@ -374,21 +374,23 @@ html.v5b-js section[data-tema]{background:transparent!important}
 html.v5b-js footer{background:transparent;margin-top:0;border-radius:0}
 html.v5b-js footer::before{display:none}
 html.v5b-js body{background-color:#15100D}
-/* rodapé: 483px e nenhum botão (medido na v5a de 24/11); o flutuante está desligado aqui */
-footer{min-height:0}
-/* o canto arredondado deixava aparecer o creme do body (#F4EEE8) em cima do preto: dois cantos brancos.
-   Sem canto, o rodapé continua o preto do fecho em vez de ser um bloco solto. */
-footer{border-radius:0;padding-top:clamp(26px,4svh,38px)}
-/* a base reservava a altura da barra flutuante embaixo (100px), mas a barra fica escondida nesta zona:
-   ela some assim que o fecho entra na tela, bem antes do rodapé. Fica só o respiro do aparelho. */
-html[data-v5] footer{padding-bottom:calc(env(safe-area-inset-bottom) + 28px)}  /* [data-v=D] footer vence um footer solto */
-/* o nome em Gloock 32px repetia o hero e inflava o rodapé; aqui ele só identifica o titular */
+/* o canto arredondado deixava aparecer o creme do body (#F4EEE8) por trás do preto: dois cantos
+   brancos no topo. Sem canto, o rodapé continua o preto do fecho em vez de ser um bloco solto. */
+footer{min-height:0;border-radius:0;padding-top:clamp(26px,4svh,38px)}
+/* os 100px de baixo reservavam a barra flutuante, que fica escondida nesta zona: ela some assim
+   que o fecho entra na tela. [data-v=D] footer vence um footer solto, daí o html[data-v5]. */
+html[data-v5] footer{padding-bottom:calc(env(safe-area-inset-bottom) + 28px)}
+/* o nome em Gloock 32px repetia o hero e inflava o bloco; aqui ele só identifica o titular */
 footer .marca{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:1.02rem;font-weight:600;letter-spacing:0;line-height:1.3}
-footer .btn-pe{display:inline-flex;margin:20px 0 4px;min-height:52px;width:100%;max-width:380px}
-@media (min-width:860px){footer .btn-pe{width:auto;padding-left:34px;padding-right:34px}}
-/* Servicios: seis cartões iguais e quase invisíveis (fundo .06, borda .12) não diziam o que ela faz melhor.
-   O alisado brasileño é o que o público espanhol procura pelo nome (está no FAQ e no próprio cartão),
-   então ele ganha peso — sem uma palavra nova, que seria fato inventado. */
+footer .marca + span{color:var(--tinta-2)}
+/* sem botão aqui, o WhatsApp é o canal que importa na fileira: ganha o dourado dos links */
+footer nav{gap:6px 26px;margin:16px 0 2px}
+footer nav a[href*="wa.me"]{color:var(--ouro-claro);font-weight:600}
+footer details{margin-top:20px}
+footer .copia{margin-top:14px}
+/* Servicios: seis cartões idênticos e quase invisíveis (fundo .06, borda .12) não diziam o que ela
+   faz melhor. O alisado brasileño, que o público espanhol procura pelo nome (está no FAQ e no
+   próprio cartão), ganha peso — sem uma palavra nova, que seria fato inventado. */
 #servicios .card{transition:background-color .35s ease,border-color .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
 #servicios .card:nth-child(4){background:linear-gradient(rgba(46,20,38,.85),rgba(46,20,38,.3));background:linear-gradient(in oklab,rgba(46,20,38,.85),rgba(46,20,38,.3));border-top:2px solid var(--ouro-claro);box-shadow:0 12px 34px rgba(21,16,13,.4)}
 @media (hover:hover){#servicios .card:hover{background-color:rgba(243,235,225,.1);border-top-color:var(--ouro);transform:translateY(-3px)}}
@@ -527,7 +529,7 @@ footer .btn-pe{display:inline-flex;margin:20px 0 4px;min-height:52px;width:100%;
 <a href="https://www.tiktok.com/@julianahmcz" target="_blank" rel="noopener">TikTok</a><a href="https://wa.me/5512974063847?text=Hola%20Juliana%2C%20quiero%20pedir%20cita." target="_blank" rel="noopener">WhatsApp</a>
 <!-- [confirmar Juliana]: link do curso online («¿Eres peluquera? Mi curso online») e em que língua -->
 </nav>
-<a class="btn btn-pe" href="https://wa.me/5512974063847?text=Hola%20Juliana%2C%20quiero%20pedir%20cita." target="_blank" rel="noopener">Pide cita por WhatsApp</a><details class="entra">
+<details class="entra">
 <summary>Aviso legal y privacidad</summary>
 <!-- [confirmar Juliana]: titular, NIF, e-mail de contacto e dados exigidos pela LSSI-CE -->
 <div class="legal">
