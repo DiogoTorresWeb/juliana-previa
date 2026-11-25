@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Para o domínio final. Na prévia o site segue com noindex e robots Disallow. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://[dominio]/</loc><changefreq>monthly</changefreq></url>
+</urlset>

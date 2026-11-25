@@ -1,0 +1,4 @@
+# Usar no domínio final, SÓ quando sair o noindex.
+User-agent: *
+Allow: /
+Sitemap: https://[dominio]/sitemap.xml
